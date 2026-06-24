@@ -7,7 +7,7 @@ RUTH_FILE="log/ruth.log"
 LOG_FILES=("$LOG_FILE" "$ABOUT_FILE" "$RUTH_FILE")
 
 ERROR_PATTERN=("ERROR" "INFO" "WARNING")
-if [ ! -f log/system.log ]; then
+if [ ! -f $LOG_FILE ]; then
 echo "file does not exist"
 exit 1
 fi 
@@ -39,6 +39,7 @@ echo -e "\n-----UPLOADED FILE IN THE LAST 20 DAYS-----"
 find . -name "*.log" -mtime -10
 echo -e "\n--------PROCESSING UNIT------"
 ps aux | sort -nrk 3 | tail -3
+echo ""
 count=$(grep "ERROR" $LOG_FILES | wc -l)
 if [ $count -gt 0 ]
 then
