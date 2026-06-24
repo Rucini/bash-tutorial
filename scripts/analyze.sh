@@ -32,17 +32,19 @@ done
 
 
 echo -e "\n------DISK FILE------"
-df -h | tail -5
+df -h | tail -3
 echo -e "\n------LARGE FILE------"
 find . -type f -name "*.log" -size +1k
 echo -e "\n-----UPLOADED FILE IN THE LAST 20 DAYS-----"
 find . -name "*.log" -mtime -10
 echo -e "\n--------PROCESSING UNIT------"
-ps aux | sort -nrk 3 | tail -5
-count=$(grep "ERROR" log/system.log | wc -l)
+ps aux | sort -nrk 3 | tail -3
+count=$(grep "ERROR" $LOG_FILES | wc -l)
 if [ $count -gt 0 ]
 then
  echo "there are errors in the system"
 else
  echo "system is clean"
  fi
+
+echo -e "\n--------ANALYSIS COMPLETED------"
