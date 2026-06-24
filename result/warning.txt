@@ -1,0 +1,8 @@
+
+WARNING:
+10
+INFO: Backup completed
+ERROR: Network unreachable
+INFO: User login
+
+
